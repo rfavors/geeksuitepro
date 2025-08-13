@@ -4,11 +4,15 @@ services:
   app:
     build: .
     restart: unless-stopped
+    ports:
+      - "3000:3000"
     environment:
       - NODE_ENV=production
       - PORT=3000
       - DATABASE_URL=${DATABASE_URL}
       - JWT_SECRET=${JWT_SECRET}
+      - SESSION_SECRET=${SESSION_SECRET}
+      - CLIENT_URL=${CLIENT_URL}
       - JWT_EXPIRE=7d
       - MAILGUN_API_KEY=${MAILGUN_API_KEY:-}
       - MAILGUN_DOMAIN=${MAILGUN_DOMAIN:-}
